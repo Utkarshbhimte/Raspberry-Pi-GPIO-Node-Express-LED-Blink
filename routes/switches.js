@@ -13,8 +13,11 @@ exports.toggleSwitch = function(req, res){
     const Switch = req.params.switch;
     const pin = pinForSwitch[Switch];
     const state = (req.params.state === 'on') ? 1 : 0;
+
+    console.log('\n***************************');
     console.log('reached to switch', Switch);
     console.log('tweaking pin', pin, 'to', state);
+    console.log('\n***************************');
 
 	gpio.open(pin, "output", function(err) {
 	    gpio.write(pin, state, function() {
