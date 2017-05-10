@@ -6,6 +6,7 @@
 var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
+  , switches = require('./routes/switches')
   , http = require('http')
   , path = require('path');
 
@@ -32,6 +33,7 @@ app.configure('development', function(){
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/blink', servo.blink);
+app.get('/turn-switch/:switch/:state', switches.toggleSwitch);
 app.get('/blink/:interval', servo.blinkInterval);
 app.get('/turnRight', servo.turnRight);
 
